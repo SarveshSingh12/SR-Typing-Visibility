@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="SR Typing — Hindi and English typing practice, speed tests and government exam preparation.">
+<title>SR Typing — Complete Typing Platform</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="announcement"></div>
+<header>
+  <a class="brand" href="#home"><span>SR</span> Typing</a>
+  <nav id="nav">
+    <a href="#home">Home</a><a href="#typing">Typing Test</a><a href="#exams">Exams</a><a href="#dashboard">Dashboard</a><a href="#about">About</a><a id="adminLink" class="hidden" href="#adminPanel">Admin</a>
+  </nav>
+  <div class="actions"><span id="user"></span><button class="ghost" id="authBtn" onclick="openAuth()">Login</button></div>
+</header>
+
+<main>
+<section id="home" class="hero page">
+ <div class="heroText"><small>ALL-IN-ONE TYPING PLATFORM</small><h1 id="heroTitle">Master Your Typing Skills</h1><p id="heroSubtitle">A complete Hindi & English typing platform for practice, speed tests and government exam preparation.</p>
+ <div class="heroButtons"><a class="btn" href="#typing">Start Typing Test</a><a class="btn ghostBtn" href="#exams">Explore Exams</a></div>
+ <div class="heroStats"><div><b>Hindi</b><span>Typing</span></div><div><b>English</b><span>Typing</span></div><div><b>Live</b><span>Results</span></div><div><b>Exam</b><span>Mode</span></div></div>
+ </div>
+ <div class="heroCard"><div class="orb">SR</div><h3>Typing Lab</h3><p>Practice • Measure • Improve</p><div class="mini"><span>Net WPM</span><b>∞</b></div><div class="mini"><span>Accuracy</span><b>100%</b></div></div>
+</section>
+
+<section id="typing" class="page panel">
+ <div class="sectionHead"><div><small>TYPING LAB</small><h2>Professional Typing Test</h2></div><button class="secondary" id="newPassage">New Passage</button></div>
+ <div class="controls">
+  <label>Language<select id="lang"><option>English</option><option>Hindi</option></select></label>
+  <label>Difficulty<select id="difficulty"><option>Easy</option><option>Medium</option><option>Hard</option></select></label>
+  <label>Category<select id="category"><option>All</option><option>General</option><option>Education</option><option>Technology</option><option>Office</option></select></label>
+  <label>Duration<select id="duration"><option value="60">1 min</option><option value="300" selected>5 min</option><option value="600">10 min</option><option value="900">15 min</option></select></label>
+ </div>
+ <div class="passageMeta"><b id="passageTitle">Loading…</b><span id="passageTag"></span></div>
+ <div id="target"></div><textarea id="input" disabled spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Login and press Start Test…"></textarea>
+ <div class="keyboard" id="keyboard"></div><div class="progress"><i id="progress"></i></div>
+ <div class="metrics"><div><small>NET WPM</small><strong id="net">0</strong></div><div><small>GROSS WPM</small><strong id="gross">0</strong></div><div><small>CPM</small><strong id="cpm">0</strong></div><div><small>ACCURACY</small><strong id="acc">100%</strong></div><div><small>ERRORS</small><strong id="err">0</strong></div><div><small>BACKSPACES</small><strong id="back">0</strong></div><div><small>TIME</small><strong id="time">5:00</strong></div><div><small>FOCUS LOSSES</small><strong id="focus">0</strong></div></div>
+ <button id="start">Start Test</button> <button class="secondary" id="pause">Pause</button> <button class="secondary" id="reset">Reset</button><div id="result"></div>
+</section>
+
+<section id="exams" class="page panel">
+ <div class="sectionHead"><div><small>GOVERNMENT EXAM CENTER</small><h2>Exam Preparation</h2></div><a class="btn" href="#examCenter">Open Exam Center</a></div>
+ <div id="examsGrid" class="cards"></div>
+</section>
+
+<section id="examCenter" class="page panel">
+ <div class="sectionHead"><div><small>REAL EXAM SIMULATION</small><h2>Government Typing Exam</h2></div><span class="status" id="examStatus">Ready</span></div>
+ <div id="examSetup"><p>Choose an exam, enter your candidate details and start a timed simulation.</p><div class="examForm"><select id="examSelect"></select><input id="candidateName" placeholder="Candidate name"><input id="rollNo" placeholder="Roll number"><button id="startExam">Start Exam</button></div></div>
+ <div id="examScreen" class="hidden"><div class="examTop"><div><b id="examName"></b><small id="examRules"></small></div><strong id="examClock">10:00</strong></div><div class="warning">⚠️ Exam mode: paste, cut and context menu are disabled. Focus losses are recorded.</div><p>Candidate: <b id="examCandidate"></b> • Roll No: <b id="examRoll"></b></p><div id="examTarget"></div><textarea id="examInput" spellcheck="false" placeholder="Start typing here…"></textarea><div class="metrics"><div><small>NET WPM</small><strong id="examNet">0</strong></div><div><small>ACCURACY</small><strong id="examAcc">100%</strong></div><div><small>ERRORS</small><strong id="examErr">0</strong></div><div><small>FOCUS LOSSES</small><strong id="examFocus">0</strong></div></div><button id="submitExam">Submit Exam</button></div>
+ <div id="examResult"></div>
+</section>
+
+<section id="dashboard" class="page panel">
+ <div class="sectionHead"><div><small>YOUR PERFORMANCE</small><h2>Dashboard</h2></div><button class="secondary" onclick="loadDashboard()">Refresh</button></div>
+ <div id="dash" class="metrics"></div><h3>Recent Tests</h3><div id="recent"></div><h3>Exam History</h3><div id="examHistory"></div>
+</section>
+
+<section id="about" class="page panel about">
+ <small>ABOUT SR TYPING</small><h2>Everything you need to type better.</h2><p id="aboutText"></p>
+ <div class="featureGrid"><div><b>⚡ Speed Practice</b><p>Live WPM, CPM and accuracy tracking.</p></div><div><b>⌨️ Hindi + English</b><p>Practice in both languages.</p></div><div><b>🏛️ Exam Mode</b><p>Government-style timed simulations.</p></div><div><b>🏆 Certificates</b><p>Printable exam result certificates.</p></div></div>
+</section>
+</main>
+
+
+<section id="adminPanel" class="page panel hidden">
+ <div class="sectionHead"><div><small>ADMIN PANEL</small><h2>Passage Manager</h2></div><button class="secondary" onclick="loadAdminPassages()">Refresh</button></div>
+ <div class="adminNotice">Only admin accounts can use this panel. English exam passages require 150+ words; Hindi passages require 125+ words.</div>
+ <form id="passageForm" class="adminForm">
+  <label>Language<select id="pLang"><option>English</option><option>Hindi</option></select></label>
+  <label>Difficulty<select id="pDiff"><option>Easy</option><option>Medium</option><option>Hard</option></select></label>
+  <label>Category<input id="pCat" value="General" placeholder="General"></label>
+  <label>Title<input id="pTitle" placeholder="Passage title" required></label>
+  <label class="full">Typing Paragraph<textarea id="pText" rows="9" placeholder="Enter the complete typing paragraph..." required></textarea></label>
+  <div class="wordCounter full"><b id="pCount">0 words</b><span id="pRequirement">Minimum 150 words</span></div>
+  <button class="full" type="submit">＋ Add Passage</button>
+  <p id="adminMsg" class="full"></p>
+ </form>
+ <h3>Existing Passages</h3>
+ <div id="adminPassages"></div>
+</section>
+
+<footer><div><b>SR Typing</b><p>Improve your speed. Master your typing.</p></div><div><b>Quick Links</b><p><a href="#typing">Typing</a> · <a href="#exams">Exams</a> · <a href="#dashboard">Dashboard</a></p></div><div><b>Contact</b><p id="contactEmail">support@srtyping.local</p></div></footer>
+
+<div id="modal" class="modal hidden"><div class="modalBox"><button class="close" onclick="closeAuth()">×</button><h2 id="mt">Login</h2><input id="name" placeholder="Name"><input id="email" placeholder="Email"><input id="pass" type="password" placeholder="Password"><button id="auth">Login</button><button class="textBtn" id="switch">Create account</button><p id="msg"></p></div></div>
+<script src="app.js"></script>
+</body></html>
